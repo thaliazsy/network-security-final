@@ -126,13 +126,13 @@ class Window(Frame):
             self.canvas.delete('all')
             # Create text widget and specify size.
             T = Text(root,  height=20, width=80)
-            self.canvas.create_window(300, 500, window=T)
+            self.canvas.create_window(300, 300, window=T)
             # Insert The Fact.
             T.insert(END, encoded_key)
             
             # Create text widget and specify size.
             T = Text(root,  height=20, width=80)
-            self.canvas.create_window(900, 500, window=T)
+            self.canvas.create_window(900, 300, window=T)
             # Insert The Fact.
             T.insert(END, public_key)
 
@@ -147,14 +147,14 @@ class Window(Frame):
         self.canvas.delete('all')
         # Create text widget and specify size.
         T = Text(root, height=20, width=80)
-        self.canvas.create_window(300, 500, window=T)
+        self.canvas.create_window(300, 300, window=T)
         # Insert The Fact.
         T.insert(END, "SIGNING KEY= "+self.sk.to_string().hex())
         # Create text widget and specify size.
 
         # Create text widget and specify size.
         T = Text(root, height=20, width=80)
-        self.canvas.create_window(900, 500, window=T)
+        self.canvas.create_window(900, 300, window=T)
         # Insert The Fact.
         T.insert(END, "VERIFYING KEY= "+self.vk.to_string().hex())
 
@@ -182,8 +182,8 @@ class Window(Frame):
             T.insert(END, public_key)
 
     def open_original_image(self):
-        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select JPG File",
-                                              filetypes=[("JPG Files", "*.bmp")])
+        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select BMP File",
+                                              filetypes=[("BMP Files", "*.bmp")])
         if not filename:
             return  # user cancelled; stop this method
         self.canvas.delete('all')
@@ -197,8 +197,8 @@ class Window(Frame):
             self.canvas.create_window(300, 300, window=label)
 
     def open_output_image(self):
-        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select JPG File",
-                                              filetypes=[("JPG Files", "*.bmp")])
+        filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select BMP File",
+                                              filetypes=[("BMP Files", "*.bmp")])
         if not filename:
             return  # user cancelled; stop this method
         self.output_image = cv2.imread(filename)
@@ -512,6 +512,7 @@ if __name__ == '__main__':
     root.title("Digital Signature and Watermarking GUI")
     app = Window(root)
     app.pack(fill=BOTH, expand=1)
+    
     root.mainloop()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
